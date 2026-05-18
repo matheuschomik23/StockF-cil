@@ -315,6 +315,87 @@
         </main>
     </div>
 
+    <!-- Modal Nova Entrada -->
+    <div id="modal-nova-entrada" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Nova Entrada de Estoque</h3>
+                <button class="modal-close-btn" id="close-entrada">&times;</button>
+            </div>
+            <form id="form-nova-entrada">
+                <div class="form-group">
+                    <label>Produto</label>
+                    <select required>
+                        <option value="">Selecione um produto</option>
+                        <option value="Arroz Tio Urbano 5kg">Arroz Tio Urbano 5kg</option>
+                        <option value="Feijão Carioca 1kg">Feijão Carioca 1kg</option>
+                        <option value="Leite Integral 1L">Leite Integral 1L</option>
+                        <option value="Óleo de Soja 900ml">Óleo de Soja 900ml</option>
+                        <option value="Café Pilão 500g">Café Pilão 500g</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantidade (unidades)</label>
+                    <input type="number" min="1" required placeholder="Ex: 50">
+                </div>
+                <div class="form-group">
+                    <label>Observação (opcional)</label>
+                    <textarea placeholder="Motivo, nota sobre o produto..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancel-entrada">Cancelar</button>
+                    <button type="submit" class="btn-modal-confirm">Registrar Entrada</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Registrar Saída -->
+    <div id="modal-registrar-saida" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Registrar Saída de Estoque</h3>
+                <button class="modal-close-btn" id="close-saida">&times;</button>
+            </div>
+            <form id="form-registrar-saida">
+                <div class="form-group">
+                    <label>Produto</label>
+                    <select required>
+                        <option value="">Selecione um produto</option>
+                        <option value="Arroz Tio Urbano 5kg">Arroz Tio Urbano 5kg</option>
+                        <option value="Feijão Carioca 1kg">Feijão Carioca 1kg</option>
+                        <option value="Leite Integral 1L">Leite Integral 1L</option>
+                        <option value="Óleo de Soja 900ml">Óleo de Soja 900ml</option>
+                        <option value="Café Pilão 500g">Café Pilão 500g</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantidade (unidades)</label>
+                    <input type="number" min="1" required placeholder="Ex: 12">
+                </div>
+                <div class="form-group">
+                    <label>Motivo da Saída</label>
+                    <select required>
+                        <option value="">Selecione o motivo</option>
+                        <option value="Venda">Venda</option>
+                        <option value="Devolução">Devolução</option>
+                        <option value="Perda">Perda</option>
+                        <option value="Dano">Dano</option>
+                        <option value="Transferência">Transferência</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Observação (opcional)</label>
+                    <textarea placeholder="Detalhes adicionais..."></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-modal-cancel" id="cancel-saida">Cancelar</button>
+                    <button type="submit" class="btn-modal-confirm">Registrar Saída</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script src="operador.js"></script>
 </body>
 </html>
