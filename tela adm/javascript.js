@@ -13,43 +13,102 @@ document.addEventListener("DOMContentLoaded", () => {
     const btnOperador = document.getElementById("btn-operador");
     const btnCliente = document.getElementById("btn-cliente");
 
+    // Credenciais simples (apenas para demo local)
+    const VALID_USERNAME = 'stockfacil';
+    const VALID_PASSWORD = '2003';
+    let loggedIn = false;
+
+    // Função utilitária para (des)habilitar botões de acesso rápido
+    function setQuickAccessEnabled(enabled) {
+        [btnAdmin, btnOperador, btnCliente].forEach(btn => {
+            if (!btn) return;
+            btn.disabled = !enabled;
+            if (!enabled) btn.classList.add('disabled'); else btn.classList.remove('disabled');
+        });
+    }
+
+    // Inicialmente bloqueia os botões rápidos até autenticar
+    setQuickAccessEnabled(false);
+
+    // Handlers que exigem autenticação
+    function handleProtectedAction(action) {
+        if (!loggedIn) {
+            alert('Acesso negado. Informe usuário e senha para liberar os botões de acesso rápido.');
+            // mostra a tela de login para o usuário se estiver oculta
+            loginScreen.classList.remove('hidden');
+            mainSystem.classList.add('hidden');
+            const userInput = document.getElementById('username');
+            if (userInput) userInput.focus();
+            return;
+        }
+        action();
+    }
+
     if (btnAdmin) {
-        btnAdmin.addEventListener("click", (e) => {
+        btnAdmin.addEventListener('click', (e) => {
             e.preventDefault();
-            loginScreen.classList.add("hidden");
-            mainSystem.classList.remove("hidden");
-            document.body.style.backgroundColor = "#dcdcdc";
+            handleProtectedAction(() => {
+                loginScreen.classList.add('hidden');
+                mainSystem.classList.remove('hidden');
+                document.body.style.backgroundColor = '#dcdcdc';
+            });
         });
     }
 
     if (btnOperador) {
-        btnOperador.addEventListener("click", (e) => {
+        btnOperador.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = "../tela operador/operador.html";
+            handleProtectedAction(() => {
+                window.location.href = '../tela operador/operador.html';
+            });
         });
     }
 
     if (btnCliente) {
-        btnCliente.addEventListener("click", (e) => {
+        btnCliente.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = "../tela cliente/cliente.html";
+            handleProtectedAction(() => {
+                window.location.href = '../tela cliente/cliente.html';
+            });
         });
     }
 
     // --- Fluxo de Login / Logout ---
-    loginForm.addEventListener("submit", (e) => {
+    loginForm.addEventListener('submit', (e) => {
         e.preventDefault(); // Evita recarga da página
-        
-        // Simulação simples de validação de acesso
-        loginScreen.classList.add("hidden");
-        mainSystem.classList.remove("hidden");
-        document.body.style.backgroundColor = "#dcdcdc"; // Troca fundo para combinar com o painel
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (username === VALID_USERNAME && password === VALID_PASSWORD) {
+            // Autenticação bem sucedida
+            loggedIn = true;
+            setQuickAccessEnabled(true);
+            loginScreen.classList.add('hidden');
+            mainSystem.classList.remove('hidden');
+            document.body.style.backgroundColor = '#dcdcdc';
+        } else {
+            // Falha na autenticação
+            alert('Usuário ou senha inválidos. Tente novamente.');
+            loggedIn = false;
+            setQuickAccessEnabled(false);
+            document.getElementById('password').value = '';
+            document.getElementById('password').focus();
+        }
     });
 
-    btnSair.addEventListener("click", () => {
-        mainSystem.classList.add("hidden");
-        loginScreen.classList.remove("hidden");
-        document.body.style.backgroundColor = "#0b1a24"; // Retorna fundo escuro
+    btnSair.addEventListener('click', () => {
+        // Logout: reseta estado de autenticação
+        loggedIn = false;
+        setQuickAccessEnabled(false);
+        mainSystem.classList.add('hidden');
+        loginScreen.classList.remove('hidden');
+        document.body.style.backgroundColor = '#0b1a24'; // Retorna fundo escuro
+        // limpa campos de login
+        const userInput = document.getElementById('username');
+        const passInput = document.getElementById('password');
+        if (userInput) userInput.value = '';
+        if (passInput) passInput.value = '';
     });
 
     // --- Navegação entre as Telas (Abas da Sidebar) ---
