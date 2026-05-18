@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockFácil - Painel do Operador</title>
+    <link rel="stylesheet" href="operador.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="app-layout">
+        
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                Stock<span>Fácil</span>
+            </div>
+            
+            <div class="sidebar-section">
+                <p class="section-title">Painel do Operador</p>
+                <nav class="sidebar-menu">
+                    <a href="#" class="menu-item active" data-tab="tab-painel">
+                        <i class="fa-solid fa-chart-pie"></i> Painel
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-atualizar">
+                        <i class="fa-solid fa-boxes-packing"></i> Atualizar Pedidos
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-movimentacoes">
+                        <i class="fa-solid fa-arrow-right-arrow-left"></i> Movimentações
+                    </a>
+                    <a href="#" class="menu-item" data-tab="tab-envio">
+                        <i class="fa-solid fa-truck-ramp-box"></i> Envio e Entrega
+                    </a>
+                </nav>
+            </div>
+
+            <a href="#" class="logout-btn">
+                <i class="fa-solid fa-arrow-door-out"></i> Sair
+            </a>
+        </aside>
+
+        <main class="main-content">
+
+            <section id="tab-painel" class="tab-content">
+                <div class="header-page">
+                    <h2>Painel do Operador</h2>
+                    <p class="subtitle-page">Pedidos pendentes</p>
+                </div>
+
+                <div class="metrics-grid">
+                    <div class="metric-card">
+                        <span class="card-title">Pedidos Pendentes</span>
+                        <span class="card-value value-danger">12</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="card-title">Em Separação</span>
+                        <span class="card-value value-info">05</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="card-title">Enviados Hoje</span>
+                        <span class="card-value value-success">18</span>
+                    </div>
+                    <div class="metric-card">
+                        <span class="card-title">Entregas Atrasadas</span>
+                        <span class="card-value value-warning">02</span>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h3>Pedidos Pendentes</h3>
+                    <div class="table-responsive">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nº Pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Itens</th>
+                                    <th>Status</th>
+                                    <th>Data</th>
+                                    <th class="text-right">Ação</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#1042</strong></td>
+                                    <td>Maria Silva</td>
+                                    <td>3 Itens</td>
+                                    <td><span class="badge badge-pending">Pendente</span></td>
+                                    <td>13/04/2026</td>
+                                    <td class="text-right"><button class="btn-table-action btn-trigger-update" data-pedido="#1042" data-cliente="Maria Silva">Atualizar</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1041</strong></td>
+                                    <td>João Pereira</td>
+                                    <td>1 Item</td>
+                                    <td><span class="badge badge-processing">Em Separação</span></td>
+                                    <td>13/04/2026</td>
+                                    <td class="text-right"><button class="btn-table-action">Atualizar</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1039</strong></td>
+                                    <td>Ana Costa</td>
+                                    <td>5 Itens</td>
+                                    <td><span class="badge badge-pending">Pendente</span></td>
+                                    <td>12/04/2026</td>
+                                    <td class="text-right"><button class="btn-table-action">Atualizar</button></td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1038</strong></td>
+                                    <td>Carlos Mendes</td>
+                                    <td>2 Itens</td>
+                                    <td><span class="badge badge-shipped">Enviado</span></td>
+                                    <td>12/04/2026</td>
+                                    <td class="text-right"><button class="btn-table-action">Atualizar</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-atualizar" class="tab-content hidden">
+                <div class="header-page">
+                    <h2>Atualizar Pedidos</h2>
+                    <p class="subtitle-page">Status e rastreio</p>
+                </div>
+
+                <div class="search-bar-container">
+                    <input type="text" placeholder="Buscar pedido por número ou cliente..." class="search-input">
+                </div>
+
+                <div class="content-box">
+                    <div class="box-header-flex">
+                        <h3 id="view-pedido-title">Pedido #1042 — Maria Silva</h3>
+                        <span class="badge badge-pending">Pendente</span>
+                    </div>
+
+                    <div class="table-responsive mt-20">
+                        <table class="data-table borderless">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor Unit.</th>
+                                    <th class="text-right">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="text-muted">Arroz Tio Urbano 5kg</td>
+                                    <td>2</td>
+                                    <td>R$ 22,90</td>
+                                    <td class="text-right text-white">R$ 45,80</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Feijão Carioca 1kg</td>
+                                    <td>3</td>
+                                    <td>R$ 7,00</td>
+                                    <td class="text-right text-white">R$ 21,00</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-muted">Óleo de Soja 900ml</td>
+                                    <td>1</td>
+                                    <td>R$ 5,50</td>
+                                    <td class="text-right text-white">R$ 5,50</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <form id="form-update-status" class="form-grid-inputs mt-30">
+                        <div class="input-group">
+                            <label>Alterar Status</label>
+                            <select class="custom-select">
+                                <option value="Pendente" selected>Pendente</option>
+                                <option value="Separacao">Em Separação</option>
+                                <option value="Enviado">Enviado</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label>Código de Rastreio</label>
+                            <input type="text" placeholder="Ex: BR123456789AA" class="custom-input">
+                        </div>
+                        <div class="form-actions-full">
+                            <button type="submit" class="btn-submit-action">Salvar Alteração</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+
+            <section id="tab-movimentacoes" class="tab-content hidden">
+                <div class="header-page">
+                    <h2>Movimentações</h2>
+                    <p class="subtitle-page">Entradas e saídas de estoque</p>
+                </div>
+
+                <div class="action-row-buttons">
+                    <button class="btn-panel-action btn-teal"><i class="fa-solid fa-plus"></i> Nova Entrada</button>
+                    <button class="btn-panel-action btn-amber"><i class="fa-solid fa-minus"></i> Registrar Saída</button>
+                </div>
+
+                <div class="content-box">
+                    <h3>Histórico de Movimentações</h3>
+                    <div class="table-responsive mt-15">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Data</th>
+                                    <th>Produto</th>
+                                    <th>Tipo</th>
+                                    <th>Quantidade</th>
+                                    <th class="text-right">Responsável</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>13/04/2026</td>
+                                    <td>Arroz Tio Urbano 5kg</td>
+                                    <td><span class="badge badge-entry">Entrada</span></td>
+                                    <td class="text-success">+50 un.</td>
+                                    <td class="text-right text-muted">Operador 1</td>
+                                </tr>
+                                <tr>
+                                    <td>13/04/2026</td>
+                                    <td>Óleo de Soja 900ml</td>
+                                    <td><span class="badge badge-leave">Saída</span></td>
+                                    <td class="text-danger">-12 un.</td>
+                                    <td class="text-right text-muted">Operador 2</td>
+                                </tr>
+                                <tr>
+                                    <td>12/04/2026</td>
+                                    <td>Feijão Carioca 1kg</td>
+                                    <td><span class="badge badge-entry">Entrada</span></td>
+                                    <td class="text-success">+30 un.</td>
+                                    <td class="text-right text-muted">Operador 1</td>
+                                </tr>
+                                <tr>
+                                    <td>12/04/2026</td>
+                                    <td>Leite Integral 1L</td>
+                                    <td><span class="badge badge-leave">Saída</span></td>
+                                    <td class="text-danger">-8 un.</td>
+                                    <td class="text-right text-muted">Operador 1</td>
+                                </tr>
+                                <tr>
+                                    <td>11/04/2026</td>
+                                    <td>Arroz Tio Urbano 5kg</td>
+                                    <td><span class="badge badge-leave">Saída</span></td>
+                                    <td class="text-danger">-20 un.</td>
+                                    <td class="text-right text-muted">Operador 2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="tab-envio" class="tab-content hidden">
+                <div class="header-page">
+                    <h2>Envio e Entrega</h2>
+                    <p class="subtitle-page">Controle logístico</p>
+                </div>
+
+                <div class="content-box">
+                    <h3>Pedidos Aprovados para Envio</h3>
+                    <div class="table-responsive mt-15">
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Nº Pedido</th>
+                                    <th>Cliente</th>
+                                    <th>Endereço</th>
+                                    <th>Transportadora</th>
+                                    <th>Status</th>
+                                    <th class="text-right">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>#1042</strong></td>
+                                    <td>Maria Silva</td>
+                                    <td class="text-muted truncate-text">Rua das Flores, 123 - Patos de Minas</td>
+                                    <td>Correios - SEDEX</td>
+                                    <td><span class="badge badge-approved">Aprovado</span></td>
+                                    <td class="text-right flex-actions-end">
+                                        <button class="btn-small action-blue">Enviar</button>
+                                        <button class="btn-small action-gray">Rastreio</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1039</strong></td>
+                                    <td>Ana Costa</td>
+                                    <td class="text-muted truncate-text">Av. Brasil, 456 - Uberlândia</td>
+                                    <td>Jadlog</td>
+                                    <td><span class="badge badge-processing-light">Enviado</span></td>
+                                    <td class="text-right flex-actions-end">
+                                        <button class="btn-small action-green">Confirmar Entrega</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><strong>#1035</strong></td>
+                                    <td>Pedro Souza</td>
+                                    <td class="text-muted truncate-text">Rua Minas Gerais, 789 - Patrocínio</td>
+                                    <td>Correios - PAC</td>
+                                    <td><span class="badge badge-success-light">Entregue</span></td>
+                                    <td class="text-right flex-actions-end">
+                                        <button class="btn-small action-disabled" disabled>Concluído</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="operador.js"></script>
+</body>
+</html>

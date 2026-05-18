@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Fácil - Sistema de Controle de Estoque e Vendas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div id="login-screen" class="login-container">
+        <div class="login-card">
+            <h2>Stock Fácil</h2>
+            <p class="subtitle">Sistema de Controle de Estoque e Vendas</p>
+            
+            <form id="login-form">
+                <div class="input-group">
+                    <label>Usuário ou E-mail</label>
+                    <input type="text" id="username" value="stockfacil" required>
+                </div>
+                <div class="input-group">
+                    <label>Senha</label>
+                    <input type="password" id="password" value="2003" required>
+                </div>
+                <button type="submit" class="btn-primary">Acessar Sistema</button>
+            </form>
+            <a href="#" class="forgot-password">Esqueceu a senha?</a>
+        </div>
+    </div>
+
+    <div id="main-system" class="system-layout hidden">
+        
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>Stock Fácil</h3>
+                <p>Painel do Administrador</p>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <div class="menu-section">
+                    <a href="#" class="menu-item active" data-target="view-dashboard">
+                        <i class="fa-solid :fa-chart-line"></i> Dashboard
+                    </a>
+                </div>
+
+                <div class="menu-section">
+                    <span class="section-title">Gestão de Estoque</span>
+                    <a href="#" class="menu-item" data-target="view-cadastro">
+                        <i class="fa-solid fa-circle-plus"></i> Cadastro de Produtos
+                    </a>
+                    <a href="#" class="menu-item" data-target="view-lista">
+                        <i class="fa-solid fa-list"></i> Lista de Produtos
+                    </a>
+                    <a href="#" class="menu-item" data-target="view-entrada">
+                        <i class="fa-solid fa-box-open"></i> Entrada de Estoque
+                    </a>
+                </div>
+
+                <div class="menu-section">
+                    <span class="section-title">Operações e Relatórios</span>
+                    <a href="#" class="menu-item" data-target="view-vendas">
+                        <i class="fa-solid fa-cart-shopping"></i> Registro de Vendas
+                    </a>
+                    <a href="#" class="menu-item" data-target="view-relatorio">
+                        <i class="fa-solid fa-chart-bar"></i> Painel de Relatório
+                    </a>
+                    <a href="#" class="menu-item" data-target="view-alertas">
+                        <i class="fa-solid fa-bell"></i> Alertas de Estoque
+                    </a>
+                </div>
+
+                <div class="menu-section">
+                    <span class="section-title">Configurações</span>
+                    <a href="#" class="menu-item" data-target="view-usuarios">
+                        <i class="fa-solid fa-users"></i> Gestão de Usuários
+                    </a>
+                </div>
+            </nav>
+
+            <button id="btn-sair" class="btn-logout">
+                <i class="fa-solid fa-right-from-bracket"></i> Sair
+            </button>
+        </aside>
+
+        <main class="content-wrapper">
+            
+            <section id="view-dashboard" class="view-content">
+                <h2>Painel de Controle</h2>
+                <div class="cards-grid">
+                    <div class="card-info">
+                        <span>Faturamento Total</span>
+                        <strong>R$ 12.450,00</strong>
+                    </div>
+                    <div class="card-info">
+                        <span>Vendas no mês</span>
+                        <strong>142</strong>
+                    </div>
+                    <div class="card-info">
+                        <span>Produtos Cadastrados</span>
+                        <strong>85</strong>
+                    </div>
+                    <div class="card-info alert-card">
+                        <span>Estoque Crítico</span>
+                        <strong class="text-danger">04</strong>
+                    </div>
+                </div>
+
+                <div class="dashboard-tables">
+                    <div class="table-container">
+                        <h3>Notificações de Alerta</h3>
+                        <div class="alert-box">
+                            <p><strong>Produto:</strong> Arroz Tio Urbano 5kg</p>
+                            <span class="text-danger">Apenas 2 un. restantes</span>
+                        </div>
+                        <div class="alert-box">
+                            <p><strong>Produto:</strong> Óleo de Soja 900ml</p>
+                            <span class="text-danger">Apenas 5 un. restantes</span>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <h3>Produtos mais Vendidos</h3>
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Qtd. Vendida</th>
+                                    <th>Faturamento</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Feijão Carioca 1Kg</td>
+                                    <td>58</td>
+                                    <td>R$ 406,00</td>
+                                </tr>
+                                <tr>
+                                    <td>Leite Integral 1L</td>
+                                    <td>42</td>
+                                    <td>R$ 231,00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-cadastro" class="view-content hidden">
+                <h2>Cadastro Produto Novo</h2>
+                <form id="form-cadastro-produto" class="form-grid">
+                    <div class="form-group full-width">
+                        <label>Nome do Produto</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Quantidade</label>
+                        <input type="number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Estoque Mínimo</label>
+                        <input type="number" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Preço Custo (R$)</label>
+                        <input type="text" placeholder="0,00">
+                    </div>
+                    <div class="form-group">
+                        <label>Preço Venda (R$)</label>
+                        <input type="text" placeholder="0,00">
+                    </div>
+                    <div class="form-actions full-width">
+                        <button type="submit" class="btn-submit">Salvar Produto</button>
+                    </div>
+                </form>
+            </section>
+
+            <section id="view-lista" class="view-content hidden">
+                <h2>Lista de Produtos</h2>
+                <table class="data-table spacing-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Estoque</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-produtos-body">
+                        <tr>
+                            <td>#01</td>
+                            <td>Arroz Tio Urbano 5kg</td>
+                            <td>100</td>
+                            <td>
+                                <button class="action-btn"><i class="fa-solid fa-power-off"></i></button>
+                                <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#02</td>
+                            <td>Óleo de Soja 900ml</td>
+                            <td>95</td>
+                            <td>
+                                <button class="action-btn"><i class="fa-solid fa-power-off"></i></button>
+                                <button class="action-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="view-entrada" class="view-content hidden">
+                <h2>Entrada de Estoque</h2>
+                <form class="form-grid single-column">
+                    <div class="form-group">
+                        <label>Produto</label>
+                        <input type="text" placeholder="Busque ou selecione o produto">
+                    </div>
+                    <div class="form-group">
+                        <label>Quantidade a adicionar:</label>
+                        <input type="number">
+                    </div>
+                    <button type="submit" class="btn-submit">Confirmar Entrada</button>
+                </form>
+            </section>
+
+            <section id="view-vendas" class="view-content hidden">
+                <h2>Registro de Vendas</h2>
+                <div class="search-box">
+                    <label>Buscar por Produto</label>
+                    <div class="input-icon">
+                        <input type="text">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Qtd</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Arroz Tio Urbano 5kg</td>
+                            <td>58</td>
+                            <td>R$ 320,00</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section id="view-relatorio" class="view-content hidden">
+                <h2>Painel de Relatório</h2>
+                <div class="report-container">
+                    <div class="chart-mockup">
+                        <p class="ficticio">*Fictício*</p>
+                        <span class="chart-title">Faturamento Mensal (R$)</span>
+                        <div class="css-chart">
+                            <svg viewBox="0 0 500 200" class="chart-svg">
+                                <path d="M 0 120 Q 50 80, 100 90 T 200 140 T 300 70 T 400 90 T 500 40" fill="none" stroke="#00b48a" stroke-width="3"/>
+                            </svg>
+                            <div class="chart-months">
+                                <span>Jan</span><span>Fev</span><span>Mar</span><span>Abr</span><span>Mai</span><span>Jun</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="report-stats">
+                        <div class="stat-box">
+                            <span>Total Vendido hoje:</span>
+                            <h3 class="text-teal">R$ 1.250,00</h3>
+                        </div>
+                        <div class="stat-box">
+                            <span>Ticket Médio:</span>
+                            <h3>R$ 85,00</h3>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-alertas" class="view-content hidden">
+                <h2>Alertas de Estoque</h2>
+                <div class="alert-list">
+                    <div class="alert-row critical">
+                        <span>Arroz Tio Urbano 5kg</span>
+                        <span class="text-danger">Restam 3 un.</span>
+                    </div>
+                    <div class="alert-row normal">
+                        <span>Óleo de Soja 900ml</span>
+                        <span>Estoque: 12 un.(OK)</span>
+                    </div>
+                </div>
+            </section>
+
+            <section id="view-usuarios" class="view-content hidden">
+                <div class="view-header-inline">
+                    <h2>Gestão de Usuários</h2>
+                    <button class="btn-add-user">+ Novo Usuário</button>
+                </div>
+                <table class="data-table user-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Papel</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Operador 1</td>
+                            <td>operador1@email.com</td>
+                            <td>Administrador</td>
+                            <td><button class="action-btn"><i class="fa-solid fa-user-gear"></i></button></td>
+                        </tr>
+                        <tr>
+                            <td>Operador 2</td>
+                            <td>operador2@email.com</td>
+                            <td>Operador</td>
+                            <td><button class="action-btn"><i class="fa-solid fa-user-gear"></i></button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="javascript.js"></script>
+</body>
+</html>

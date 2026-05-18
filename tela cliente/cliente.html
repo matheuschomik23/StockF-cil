@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockFácil - Área do Cliente</title>
+    <link rel="stylesheet" href="cliente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="navbar-logo">Stock<span>Fácil</span></div>
+        <nav class="navbar-menu">
+            <a href="#" class="nav-link" data-tab="tab-cadastro">Cadastro</a>
+            <a href="#" class="nav-link active" data-tab="tab-produtos">Produtos</a>
+            <a href="#" class="nav-link" data-tab="tab-pedidos">Meus Pedidos</a>
+            <a href="#" class="nav-link" data-tab="tab-carrinho" id="cart-nav-btn">
+                Carrinho <span class="badge" id="cart-count">3</span>
+            </a>
+            <a href="#" class="nav-link logout-link">Sair</a>
+        </nav>
+    </header>
+
+    <main class="main-container">
+
+        <section id="tab-cadastro" class="tab-content hidden">
+            <div class="form-container">
+                <h2>Cadastro de Cliente</h2>
+                <p class="section-subtitle">CPF/CNPJ, e-mail</p>
+                
+                <form id="form-cliente">
+                    <fieldset>
+                        <legend>Dados Pessoais</legend>
+                        <div class="form-row">
+                            <div class="input-block full">
+                                <label>Nome Completo</label>
+                                <input type="text" placeholder="Seu nome completo">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-block">
+                                <label>CPF / CNPJ</label>
+                                <input type="text" placeholder="000.000.000-00">
+                            </div>
+                            <div class="input-block">
+                                <label>Telefone</label>
+                                <input type="text" placeholder="(34) 99999-0000">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-block full">
+                                <label>E-mail</label>
+                                <input type="email" placeholder="seu@email.com">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Endereço</legend>
+                        <div class="form-row">
+                            <div class="input-block">
+                                <label>CEP</label>
+                                <input type="text" placeholder="38700-000">
+                            </div>
+                            <div class="input-block">
+                                <label>Cidade</label>
+                                <input type="text" placeholder="Patos de Minas">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-block short">
+                                <label>Estado</label>
+                                <input type="text" value="MG" disabled class="input-disabled">
+                            </div>
+                            <div class="input-block long">
+                                <label>Rua</label>
+                                <input type="text" placeholder="Rua das Flores">
+                            </div>
+                            <div class="input-block short">
+                                <label>Número</label>
+                                <input type="text" placeholder="123">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="input-block full">
+                                <label>Bairro</label>
+                                <input type="text" placeholder="Centro">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Senha</legend>
+                        <div class="form-row">
+                            <div class="input-block">
+                                <label>Senha</label>
+                                <input type="password" placeholder="Mínimo 6 caracteres">
+                            </div>
+                            <div class="input-block">
+                                <label>Confirmar Senha</label>
+                                <input type="password" placeholder="Repita a senha">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="btn-action">Cadastrar</button>
+                    <p class="form-footer">Já tem conta? <a href="#">Faça login</a></p>
+                </form>
+            </div>
+        </section>
+
+        <section id="tab-produtos" class="tab-content">
+            <div class="showcase-header">
+                <h2>Consultar Produtos</h2>
+                <p class="section-subtitle">Verificar estoque</p>
+                <div class="search-wrapper">
+                    <input type="text" placeholder="Buscar produto...">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-icon"><i class="fa-solid fa-bowl-rice"></i></div>
+                    <h3>Arroz Tio Urbano 5kg</h3>
+                    <p class="product-desc">Arroz tipo 1 longo fino, pacote 5kg</p>
+                    <div class="product-meta">
+                        <span class="price">R$ 22,90</span>
+                        <span class="status status-ok"><i class="fa-solid fa-circle"></i> Em estoque</span>
+                    </div>
+                    <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3>Feijão Carioca 1kg</h3>
+                    <p class="product-desc">Feijão carioca tipo 1, pacote 1kg</p>
+                    <div class="product-meta">
+                        <span class="price">R$ 7,00</span>
+                        <span class="status status-ok"><i class="fa-solid fa-circle"></i> Em estoque</span>
+                    </div>
+                    <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon"><i class="fa-solid fa-glass-water"></i></div>
+                    <h3>Leite Integral 1L</h3>
+                    <p class="product-desc">Leite integral UHT, caixa 1 litro</p>
+                    <div class="product-meta">
+                        <span class="price">R$ 5,50</span>
+                        <span class="status status-alert"><i class="fa-solid fa-circle"></i> Poucas un.</span>
+                    </div>
+                    <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon"><i class="fa-solid fa-bottle-droplet"></i></div>
+                    <h3>Óleo de Soja 900ml</h3>
+                    <p class="product-desc">Óleo de soja refinado, garrafa 900ml</p>
+                    <div class="product-meta">
+                        <span class="price">R$ 5,50</span>
+                        <span class="status status-ok"><i class="fa-solid fa-circle"></i> Em estoque</span>
+                    </div>
+                    <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                </div>
+
+                <div class="product-card out-of-stock">
+                    <div class="product-icon"><i class="fa-solid fa-cubes-sugar"></i></div>
+                    <h3>Açúcar Cristal 1kg</h3>
+                    <p class="product-desc">Açúcar cristal refinado, pacote 1kg</p>
+                    <div class="product-meta">
+                        <span class="price">R$ 4,20</span>
+                        <span class="status status-out"><i class="fa-solid fa-circle"></i> Esgotado</span>
+                    </div>
+                    <button class="btn-add-cart" disabled>Indisponível</button>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-icon"><i class="fa-solid fa-mug-hot"></i></div>
+                    <h3>Café Pilão 500g</h3>
+                    <p class="product-desc">Café torrado e moído, pacote 500g</p>
+                    <div class="product-meta">
+                        <span class="price">R$ 15,90</span>
+                        <span class="status status-ok"><i class="fa-solid fa-circle"></i> Em estoque</span>
+                    </div>
+                    <button class="btn-add-cart">Adicionar ao Carrinho</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-carrinho" class="tab-content hidden">
+            <h2>Compra de Produtos</h2>
+            <p class="section-subtitle mb-30">Checkout</p>
+
+            <div class="checkout-layout">
+                <div class="checkout-box">
+                    <h3>Resumo do Carrinho</h3>
+                    
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <p class="item-title">Arroz Tio Urbano 5kg</p>
+                            <span class="item-qty">Qtd: 2</span>
+                        </div>
+                        <span class="item-price">R$ 45,80</span>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <p class="item-title">Feijão Carioca 1kg</p>
+                            <span class="item-qty">Qtd: 3</span>
+                        </div>
+                        <span class="item-price">R$ 21,00</span>
+                    </div>
+
+                    <div class="cart-item">
+                        <div class="item-info">
+                            <p class="item-title">Óleo de Soja 900ml</p>
+                            <span class="item-qty">Qtd: 1</span>
+                        </div>
+                        <span class="item-price">R$ 5,50</span>
+                    </div>
+
+                    <div class="cart-total">
+                        <span>TOTAL</span>
+                        <span class="total-value">R$ 72,30</span>
+                    </div>
+                </div>
+
+                <div class="checkout-column-right">
+                    <div class="checkout-box">
+                        <h3>Endereço de Entrega</h3>
+                        <div class="address-preview">
+                            <label>Endereço</label>
+                            <p>Rua dos Flores, 123 - Centro</p>
+                        </div>
+                        <div class="form-row mt-15">
+                            <div class="input-block">
+                                <label>Cidade</label>
+                                <p class="input-p-like">Patos de Minas</p>
+                            </div>
+                            <div class="input-block">
+                                <label>CEP</label>
+                                <p class="input-p-like">38700-000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="checkout-box">
+                        <h3>Forma de Pagamento</h3>
+                        <div class="payment-options">
+                            <label class="radio-option">
+                                <input type="radio" name="payment" checked>
+                                <span class="radio-custom"></span> PIX
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="payment">
+                                <span class="radio-custom"></span> Cartão de Crédito
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="payment">
+                                <span class="radio-custom"></span> Boleto Bancário
+                            </label>
+                        </div>
+                    </div>
+
+                    <button class="btn-action w-100">Finalizar Compra</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="tab-pedidos" class="tab-content hidden">
+            <div class="text-center">
+                <h2>Meus Pedidos</h2>
+                <p class="section-subtitle mb-30">Histórico e status</p>
+            </div>
+
+            <div class="orders-list">
+                <div class="order-card">
+                    <div class="order-header">
+                        <span class="order-id">#1042</span>
+                        <span class="order-date">18/05/2026</span>
+                        <span class="order-total">R$ 72,30</span>
+                        <span class="badge-status status-blue">Enviado <i class="fa-solid fa-chevron-down"></i></span>
+                    </div>
+                    <div class="order-details">
+                        <div class="details-grid">
+                            <div><label>Forma de pagamento</label><p>PIX</p></div>
+                            <div><label>Transportadora</label><p>Correios - SEDEX</p></div>
+                            <div>
+                                <label>Rastreio</label>
+                                <p><span class="badge-track"><i class="fa-solid fa-box"></i> BR123456789AA</span></p>
+                            </div>
+                        </div>
+                        <div class="details-products">
+                            <div class="prod-row header"><span>Produto</span><span>Qtd</span><span>Subtotal</span></div>
+                            <div class="prod-row"><span>Arroz Tio Urbano 5kg</span><span>2</span><span>R$ 45,80</span></div>
+                            <div class="prod-row"><span>Feijão Carioca 1kg</span><span>3</span><span>R$ 21,00</span></div>
+                            <div class="prod-row"><span>Óleo de Soja 900ml</span><span>1</span><span>R$ 5,50</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="order-card closed">
+                    <div class="order-header">
+                        <span class="order-id">#1035</span>
+                        <span class="order-date">08/04/2026</span>
+                        <span class="order-total">R$ 45,80</span>
+                        <span class="badge-status status-green">Entregue <i class="fa-solid fa-chevron-right"></i></span>
+                    </div>
+                </div>
+
+                <div class="order-card closed">
+                    <div class="order-header">
+                        <span class="order-id">#1028</span>
+                        <span class="order-date">01/04/2026</span>
+                        <span class="order-total">R$ 22,90</span>
+                        <span class="badge-status status-green">Entregue <i class="fa-solid fa-chevron-right"></i></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="cliente.js"></script>
+</body>
+</html>
