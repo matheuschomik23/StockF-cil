@@ -105,6 +105,77 @@ body {
     text-decoration: none;
 }
 
+.quick-access-buttons {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+.quick-access-title {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.quick-buttons-row {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-quick-access {
+    flex: 1;
+    min-width: 70px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-admin-access {
+    background-color: #00b48a;
+    color: var(--white);
+}
+
+.btn-admin-access:hover {
+    background-color: #009370;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(0, 180, 138, 0.3);
+}
+
+.btn-operador-access {
+    background-color: #ff9500;
+    color: var(--white);
+}
+
+.btn-operador-access:hover {
+    background-color: #e68200;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(255, 149, 0, 0.3);
+}
+
+.btn-cliente-access {
+    background-color: #2196F3;
+    color: var(--white);
+}
+
+.btn-cliente-access:hover {
+    background-color: #0b7dda;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(33, 150, 243, 0.3);
+}
+
 /* ================= LAYOUT PRINCIPAL DO SISTEMA ================= */
 .system-layout {
     display: flex;

@@ -51,4 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
             document.querySelector('[data-tab="tab-produtos"]').click();
         });
     }
+
+    // --- Botão Sair (Logout) - Redireciona para Login ---
+    const logoutLink = document.querySelector(".logout-link");
+    if (logoutLink) {
+        logoutLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = "../../tela adm/index.html";
+        });
+    }
 });

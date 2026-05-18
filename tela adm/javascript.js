@@ -8,6 +8,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const menuItems = document.querySelectorAll(".menu-item");
     const viewContents = document.querySelectorAll(".view-content");
 
+    // --- Botões de Acesso Rápido (Navegação entre Abas) ---
+    const btnAdmin = document.getElementById("btn-admin");
+    const btnOperador = document.getElementById("btn-operador");
+    const btnCliente = document.getElementById("btn-cliente");
+
+    if (btnAdmin) {
+        btnAdmin.addEventListener("click", (e) => {
+            e.preventDefault();
+            loginScreen.classList.add("hidden");
+            mainSystem.classList.remove("hidden");
+            document.body.style.backgroundColor = "#dcdcdc";
+        });
+    }
+
+    if (btnOperador) {
+        btnOperador.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = "../tela operador/operador.html";
+        });
+    }
+
+    if (btnCliente) {
+        btnCliente.addEventListener("click", (e) => {
+            e.preventDefault();
+            window.location.href = "../tela cliente/cliente.html";
+        });
+    }
+
     // --- Fluxo de Login / Logout ---
     loginForm.addEventListener("submit", (e) => {
         e.preventDefault(); // Evita recarga da página
